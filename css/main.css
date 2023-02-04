@@ -4,6 +4,8 @@
     padding: 20px;
     margin: 40px;
     border: 1px solid #d8d8d8;
+    background-color: aqua;
+    border-radius: 30px;
 }
 .midText {
  text-align: center;

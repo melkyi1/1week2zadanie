@@ -11,36 +11,36 @@
     <title>1week-2zadanie</title>
 </head>
 <body>
-<form class="review-form">
-    <p class="midText">Создание заметки</p>
-<div>
-    <p>
-        <label for="name">Название заметки:</label>
-        <input required id="name" v-model="name" placeholder="название">
-        <input type="submit" value="подтвердить">
-    </p>
-
-    <p>
-        <label for="review">Содержимое:</label>
-        <textarea id="review" v-model="review"></textarea>
-    </p>
-
-    <p>
-        <label for="rating">Важность заметки:</label>
-        <select id="rating" v-model.number="rating">
-            <option>5</option>
-            <option>4</option>
-            <option>3</option>
-            <option>2</option>
-            <option>1</option>
-        </select>
-    </p>
-
-    <p>
-        <input type="submit" value="Создать">
-    </p>
-
+<div id="app">
+    <form class="review-form" @submit.prevent="onSubmit">
+        <h2 class="midText">Создание заметок</h2>
+        <p>
+            <label for="name">Название заметки:</label> <br>
+            <input required id="name" v-model="name" placeholder="Название">
+            <input  type="submit" value="Подтвердите имя">
+        <p>
+            <label for="review">Содержимое заметок:</label> <br>
+            <textarea id="review" v-model="review"></textarea>
+        </p>
+        <p>
+            <label for="rating">Важность заметки:</label>
+            <select id="rating"   v-model.number="rating">
+                <option>5</option>
+                <option>4</option>
+                <option>3</option>
+                <option>2</option>
+                <option>1</option>
+            </select>
+        </p>
+        <p>
+            <input type="submit" value="Создать заметку">
+        </p>
+    </form>
+    <li v-for="review in reviews">
+        <p>{{review.name}}</p>
+        <p>{{review.review}}</p>
+        <p>{{review.rating}}</p>
+    </li>
 </div>
-</form>
 </body>
 </html>
