@@ -36,11 +36,14 @@
             <input type="submit" value="Создать заметку">
         </p>
     </form>
-    <li v-for="review in reviews">
-        <p>{{review.name}}</p>
-        <p>{{review.review}}</p>
-        <p>{{review.rating}}</p>
+    <div class="zametka1FORM">
+        <p class="midText">Заметки 1</p>
+    <li v-for="review in reviews"> Заметка
+        <ul>Название: {{review.name}}</ul>
+        <ul>Содержимое: {{review.review}}</ul>
+        <ul>Важность - {{review.rating}}</ul>
     </li>
+    </div>
 </div>
 </body>
 </html>

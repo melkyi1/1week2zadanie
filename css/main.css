@@ -7,6 +7,14 @@
     background-color: aqua;
     border-radius: 30px;
 }
+.zametka1FORM {
+    width: auto;
+    height: auto;
+    padding: 20px;
+    margin: 40px;
+    border-radius: 30px;
+    background-color: aqua;
+}
 .midText {
  text-align: center;
 }
