@@ -12,36 +12,49 @@
 </head>
 <body>
 <div id="app">
-    <form class="review-form" @submit.prevent="onSubmit">
-        <h2 class="midText">Создание заметок</h2>
-        <p>
-            <label for="name">Название заметки:</label> <br>
-            <input required id="name" v-model="name" placeholder="Название">
-            <input  type="submit" value="Подтвердите имя">
-        <p>
-            <label for="review">Содержимое заметок:</label> <br>
-            <textarea id="review" v-model="review"></textarea>
-        </p>
-        <p>
-            <label for="rating">Важность заметки:</label>
-            <select id="rating"   v-model.number="rating">
-                <option>5</option>
-                <option>4</option>
-                <option>3</option>
-                <option>2</option>
-                <option>1</option>
-            </select>
-        </p>
-        <p>
-            <input type="submit" value="Создать заметку">
-        </p>
-    </form>
+    <a href="#openModal" class="ramka">Создать заметку</a>
+    <div id="openModal" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Создание заметок</h3>
+                    <a href="#close" title="Close" class="close">×</a>
+                </div>
+                <div class="modal-body">
+                    <form class="review-form" @submit.prevent="onSubmit">
+                        <p>
+                            <label for="name">Название заметки:</label> <br>
+                            <input required id="name" v-model="name" placeholder="Название">
+                            <input  type="submit" value="Подтвердите имя">
+                        <p>
+                            <label for="review">Содержимое заметок:</label> <br>
+                            <textarea id="review" v-model="review"></textarea>
+                        </p>
+                        <p>
+                            <label for="rating">Важность заметки:</label>
+                            <select id="rating"   v-model.number="rating">
+                                <option>5</option>
+                                <option>4</option>
+                                <option>3</option>
+                                <option>2</option>
+                                <option>1</option>
+                            </select>
+                        </p>
+                        <p>
+                            <input type="submit" value="Создать заметку">
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="zametka1FORM">
         <p class="midText">Заметки 1</p>
     <li v-for="review in reviews"> Заметка
-        <ul>Название: {{review.name}}</ul>
-        <ul>Содержимое: {{review.review}}</ul>
-        <ul>Важность - {{review.rating}}</ul>
+        <ul v-show="visibility" >Название: {{review.name}}</ul>
+        <ul v-show="visibility" >Содержимое: {{review.review}}</ul>
+        <ul v-show="visibility" >Важность - {{review.rating}}</ul>
+        <input @click="hideButton" type="submit" value="Скрыть заметку.">
     </li>
     </div>
 </div>

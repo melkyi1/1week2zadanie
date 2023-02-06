@@ -2,12 +2,16 @@ let eventBus = new Vue()
 let app = new Vue({
    el:'#app',
         data: {
+       visibility: true,
                 name: null,
                 review: null,
                 rating: null,
             reviews: [],
             },
         methods: {
+       hideButton() {
+         this.visibility = false
+       },
             onSubmit() {
                 if (this.name && this.review && this.rating) {
                     let productReview = {
