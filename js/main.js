@@ -2,6 +2,7 @@ let eventBus = new Vue()
 let app = new Vue({
    el:'#app',
         data: {
+       visibility1:true,
        visibility: true,
                 name: null,
                 review: null,
