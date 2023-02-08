@@ -66,21 +66,24 @@
     <div class="zametka1FORM">
         <p class="midText">Заметки 1</p>
     <li v-for="review in reviews"> Заметка
-        <ul v-show="visibility" >Название: {{review.name}}</ul>
-        <ul v-show="visibility" >Содержимое: {{review.review}}</ul>
-        <ul v-show="visibility" >Важность - {{review.rating}}</ul>
-        <input @click="hideButton" type="submit" value="Скрыть заметку.">
+        <ul>Название: {{review.name}}</ul>
+        <ul>Содержимое: {{review.review}}</ul>
+        <ul>Важность - {{review.rating}}</ul>
+        <input @click="perenos" type="submit" value="Перенести в 'заметки 2'">
     </li>
     </div>
     <div class="zametka2FORM">
         <p class="midText">Заметки 2</p>
-        <li v-for="review2 in reviews2"> Заметка
-            <ul>Название: {{review2.name2}}</ul>
+        <li v-for="review in reviews2"> Заметка
+            <ul>Название: {{review.name}}</ul>
+            <ul>Содержимое: {{review.review}}</ul>
+            <ul>Важность - {{review.rating}}</ul>
         </li>
     </div>
     <div class="zametka3FORM">
         <p class="midText">Заметки 3</p>
-        <li v-for="review in reviews"> Заметка
+        <li v-for="review in reviews3"> Заметка
+            <ul>Название: {{review.name}}</ul>
         </li>
     </div>
 </div>

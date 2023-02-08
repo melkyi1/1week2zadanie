@@ -1,5 +1,7 @@
 
 .zametka1FORM {
+    font-family: Arimo;
+    font-size: large;
     width: auto;
     height: auto;
     padding: 20px;
@@ -8,6 +10,8 @@
     background-color: aqua;
 }
 .zametka2FORM {
+    font-family: Arimo;
+    font-size: large;
     width: auto;
     height: auto;
     padding: 20px;
@@ -16,6 +20,8 @@
     background-color: orange;
 }
 .zametka3FORM {
+    font-family: Arimo;
+    font-size: large;
     width: auto;
     height: auto;
     padding: 20px;
@@ -88,8 +94,9 @@ body {
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
     border: 1px solid rgba(0,0,0,.2);
-    border-radius: .3rem;
+    border-radius: .9rem;
     outline: 0;
+    background-color: aqua;
 }
 @media (min-width: 768px) {
     .modal-content {

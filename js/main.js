@@ -8,30 +8,21 @@ let app = new Vue({
                 review: null,
                 rating: null,
 
-            name2:null,
-            review2:null,
-            rating2:null,
-
             reviews: [],
             reviews2: [],
+            reviews3: [],
+
             },
         methods: {
+       perenos(id) {
+           let x = this.reviews.splice(id, 1)
+            x = x.pop()
+           this.reviews2.push(x)
+           console.log(x)
+       },
        hideButton() {
          this.visibility = false
        },
-            onSubmit2() {
-           if (this.name2 && this.review2 && this.rating2) {
-               let productReview2 = {
-                   name2: this.name2,
-                   review2: this.review2,
-                   rating2: this.rating2,
-               }
-               eventBus.$emit('review-submitted', productReview)
-               this.name2 = null
-               this.review2 = null
-               this.rating2 = null
-           }
-            },
             onSubmit() {
                 if (this.name && this.review && this.rating) {
                     let productReview = {
@@ -48,21 +39,21 @@ let app = new Vue({
             },
 
         },
-    // mounted2() {
-    //    eventBus.$on('review-submitted2', productReview2 => {
-    //   this.reviews2.push(productReview2)
-    //   console.log(this.reviews2.length)
-    //    })
-    // },
     mounted() {
         eventBus.$on('review-submitted', productReview => {
             this.reviews.push(productReview)
             console.log(this.reviews.length)
-            if (this.reviews.length > 1) {
+            if (this.reviews.length > 3) {
                 this.reviews.pop(productReview)
 
                     this.reviews2.push(productReview)
                     console.log(this.reviews2.length)
+                if (this.reviews2.length > 5) {
+                    this.reviews2.pop(productReview)
+
+                    this.reviews3.push(productReview)
+                    console.log(this.reviews3.length)
+                }
             }
         })
     },
