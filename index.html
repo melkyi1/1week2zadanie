@@ -78,12 +78,15 @@
             <ul>Название: {{review.name}}</ul>
             <ul>Содержимое: {{review.review}}</ul>
             <ul>Важность - {{review.rating}}</ul>
+            <input @click="perenos2" type="submit" value="Перенести в 'заметки 3'">
         </li>
     </div>
     <div class="zametka3FORM">
         <p class="midText">Заметки 3</p>
         <li v-for="review in reviews3"> Заметка
             <ul>Название: {{review.name}}</ul>
+            <ul>Содержимое: {{review.review}}</ul>
+            <ul>Важность - {{review.rating}}</ul>
         </li>
     </div>
 </div>

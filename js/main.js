@@ -19,8 +19,17 @@ let app = new Vue({
             x = x.pop()
            this.reviews2.push(x)
            console.log(x)
+           if (this.reviews2.length > 5) {
+               this.reviews2.pop(x)
+           }
        },
-       hideButton() {
+            perenos2(id2) {
+           let x2 = this.reviews2.splice(id2, 1)
+                x2 = x2.pop()
+                this.reviews3.push(x2)
+                console.log(x2)
+            },
+            hideButton() {
          this.visibility = false
        },
             onSubmit() {
