@@ -18,9 +18,20 @@ let app = new Vue({
 
             //флажки попытаюсь сделать
 
-            cheked:false,
+            cheked: [],
             },
         methods: {
+       iz1v2if3and4() {
+
+       },
+       chekedpush(){
+           let y2
+           this.cheked.push(y2)
+           console.log(this.cheked.length)
+           if (this.cheked.length > 4) {
+               this.cheked.pop(y2)
+           }
+       },
 
        visibility3view228() {
           this.visibility3view= true
