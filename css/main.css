@@ -47,6 +47,11 @@ body {
     color: #292b2c;
     background-color: #fff;
 }
+.buttonview {
+    color: white;
+    background-color: gray;
+    border-radius: 10px;
+}
 .modal {
     position: fixed; /* фиксированное положение */
     top: 0;

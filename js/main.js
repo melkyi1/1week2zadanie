@@ -2,11 +2,15 @@ let eventBus = new Vue()
 let app = new Vue({
    el:'#app',
         data: {
-       visibility1:true,
-       visibility: true,
+       visibility: false,
+            visibility1: false,
+            visibility3view: false,
+
                 name: null,
                 review: null,
                 rating: null,
+                review2: null,
+                review3: null,
 
             reviews: [],
             reviews2: [],
@@ -14,6 +18,22 @@ let app = new Vue({
 
             },
         methods: {
+       visibility3view228() {
+          this.visibility3view= true
+       } ,
+       hidereviewoff() {
+                this.visibility1= false
+            },
+       hidereview() {
+           this.visibility1= true
+       },
+       hidebutoff() {
+           this.visibility3view= false
+           this.visibility = false
+       },
+       hidebut() {
+         this.visibility = true
+       },
        perenos(id) {
            let x = this.reviews.splice(id, 1)
             x = x.pop()
@@ -37,12 +57,16 @@ let app = new Vue({
                     let productReview = {
                         name: this.name,
                         review: this.review,
+                        review2: this.review2,
+                        review3: this.review3,
                         rating: this.rating,
 
                     }
                     eventBus.$emit('review-submitted', productReview)
                     this.name = null
                     this.review = null
+                    this.review2 = null
+                    this.review3 = null
                     this.rating = null
                 }
             },

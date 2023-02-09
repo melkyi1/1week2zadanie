@@ -40,10 +40,13 @@
                         <p>
                             <label for="name">Название заметки:</label> <br>
                             <input required id="name" v-model="name" placeholder="Название">
-                            <input  type="submit" value="Подтвердите имя">
                         <p>
                             <label for="review">Содержимое заметок:</label> <br>
                             <textarea id="review" v-model="review"></textarea>
+                        <button class="buttonview" @click="hidebut">Добавить пункт</button>
+                        <textarea style="margin-top: 15px" v-show="visibility" id="review2" v-model="review2"></textarea>
+                        <button class="buttonview" v-show="visibility" @click="visibility3view228">Добавить ещё пункт</button>
+                        <textarea style="margin-top: 15px" v-show="visibility3view" id="review3" v-model="review3"></textarea>
                         </p>
                         <p>
                             <label for="rating">Важность заметки:</label>
@@ -56,20 +59,25 @@
                             </select>
                         </p>
                         <p>
-                            <input type="submit" value="Создать заметку">
+                            <input class="buttonview" @click="hidebutoff" type="submit" value="Создать заметку">
                         </p>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+<!--  qweasd123  -->
     <div class="zametka1FORM">
         <p class="midText">Заметки 1</p>
     <li v-for="review in reviews"> Заметка
         <ul>Название: {{review.name}}</ul>
-        <ul>Содержимое: {{review.review}}</ul>
+        <ul>Содержимое: 1) {{review.review}}</ul>
+        <button class="buttonview" @click="hidereview">Показать дополнительные пункты</button>
+        <ul v-show="visibility1">2) {{review.review2}}</ul>
+        <ul v-show="visibility1">3) {{review.review3}}</ul>
+        <button class="buttonview" v-show="visibility1" @click="hidereviewoff" >Скрыть дополнительеые пункты</button>
         <ul>Важность - {{review.rating}}</ul>
-        <input @click="perenos" type="submit" value="Перенести в 'заметки 2'">
+        <input class="buttonview" @click="perenos" type="submit" value="Перенести в 'заметки 2'">
     </li>
     </div>
     <div class="zametka2FORM">
@@ -77,8 +85,12 @@
         <li v-for="review in reviews2"> Заметка
             <ul>Название: {{review.name}}</ul>
             <ul>Содержимое: {{review.review}}</ul>
+            <button class="buttonview" @click="hidereview">Показать дополнительные пункты</button>
+            <ul v-show="visibility1">2) {{review.review2}}</ul>
+            <ul v-show="visibility1">3) {{review.review3}}</ul>
+            <button class="buttonview" v-show="visibility1" @click="hidereviewoff" >Скрыть дополнительеые пункты</button>
             <ul>Важность - {{review.rating}}</ul>
-            <input @click="perenos2" type="submit" value="Перенести в 'заметки 3'">
+            <input class="buttonview" @click="perenos2" type="submit" value="Перенести в 'заметки 3'">
         </li>
     </div>
     <div class="zametka3FORM">
@@ -86,6 +98,10 @@
         <li v-for="review in reviews3"> Заметка
             <ul>Название: {{review.name}}</ul>
             <ul>Содержимое: {{review.review}}</ul>
+            <button class="buttonview" @click="hidereview">Показать дополнительные пункты</button>
+            <ul v-show="visibility1">2) {{review.review2}}</ul>
+            <ul v-show="visibility1">3) {{review.review3}}</ul>
+            <button class="buttonview" v-show="visibility1" @click="hidereviewoff" >Скрыть дополнительеые пункты</button>
             <ul>Важность - {{review.rating}}</ul>
         </li>
     </div>
