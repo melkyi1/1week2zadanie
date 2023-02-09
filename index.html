@@ -70,8 +70,8 @@
     <div class="zametka1FORM">
         <p class="midText">Заметки 1</p>
     <li v-for="review in reviews"> Заметка
-        <ul>Название: {{review.name}}</ul>
-        <ul>Содержимое: 1) {{review.review}}</ul>
+        <ul><b>Название <br>{{review.name}}</b></ul>
+        <ul>Содержимое: 1) {{review.review}}</ul> <input type="checkbox" id="checkbox1" v-model="cheked">
         <button class="buttonview" @click="hidereview">Показать дополнительные пункты</button>
         <ul v-show="visibility1">2) {{review.review2}}</ul>
         <ul v-show="visibility1">3) {{review.review3}}</ul>
@@ -83,7 +83,7 @@
     <div class="zametka2FORM">
         <p class="midText">Заметки 2</p>
         <li v-for="review in reviews2"> Заметка
-            <ul>Название: {{review.name}}</ul>
+            <ul><b>Название <br>{{review.name}}</b></ul>
             <ul>Содержимое: {{review.review}}</ul>
             <button class="buttonview" @click="hidereview">Показать дополнительные пункты</button>
             <ul v-show="visibility1">2) {{review.review2}}</ul>
@@ -96,7 +96,7 @@
     <div class="zametka3FORM">
         <p class="midText">Заметки 3</p>
         <li v-for="review in reviews3"> Заметка
-            <ul>Название: {{review.name}}</ul>
+            <ul><b>Название <br>{{review.name}}</b></ul>
             <ul>Содержимое: {{review.review}}</ul>
             <button class="buttonview" @click="hidereview">Показать дополнительные пункты</button>
             <ul v-show="visibility1">2) {{review.review2}}</ul>

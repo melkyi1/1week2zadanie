@@ -16,8 +16,12 @@ let app = new Vue({
             reviews2: [],
             reviews3: [],
 
+            //флажки попытаюсь сделать
+
+            cheked:false,
             },
         methods: {
+
        visibility3view228() {
           this.visibility3view= true
        } ,
