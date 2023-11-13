@@ -14,14 +14,14 @@ Vue.component("zametki", {
     },
     template: `
     <div>
-        <li><p>{{ data.name }}</p></li>
-         <p v-for="(review, id) in data.allreviews" :allreviews="allreviews" :id="id">{{ review.viewname }}
+        <li><p><b>Название заметки: </b>{{ data.name }}</p></li>
+         <p v-for="(review, id) in data.allreviews" :allreviews="allreviews" :id="id"><b>Задача: </b>{{ review.viewname }}
          <button v-if="review.visibility"  v-on:click="review.visibility = !review.visibility" @click="review_update(id)">Выполнить</button></p>
-         <p>{{ data.rating }}</p>
-<!--         <div class="date" v-if="data.date">-->
-<!--            <p>{{data.time}}</p>-->
-<!--            <p>{{data.date}}</p>-->
-<!--         </div>-->
+         <p><b>Важность: </b>{{ data.rating }} баллов</p>
+         <div class="date" v-if="data.date">
+            <p><b>Выполнено: </b>{{data.time}}</p>
+            <p>{{data.date}}</p>
+         </div>
     </div>
     `,
     methods: {
@@ -49,6 +49,11 @@ Vue.component("zametki", {
     data() {
         return {}
     },
+    save() {
+        localStorage.reviews = JSON.stringify(this.reviews)
+        localStorage.reviews2 = JSON.stringify(this.reviews2)
+        localStorage.reviews3 = JSON.stringify(this.reviews3)
+    }
 } )
 // 1 заметки
 Vue.component('reviews', {
@@ -66,7 +71,7 @@ Vue.component('reviews', {
     template: `
          <div class="zametka1FORM">
         <ul>
-            <zametki :data="data" v-for="(data, index) in reviews" :id="index"></zametki>
+            <zametki :data="data" @save="save()" v-for="(data, index) in reviews" :id="index"></zametki>
         </ul>
         </div>
     `, })
@@ -85,7 +90,7 @@ Vue.component('reviews', {
         template: `
          <div class="zametka2FORM">
         <ul>
-            <zametki :data="data" v-for="(data, index) in reviews2" :id="index"></zametki>
+            <zametki :data="data" @save="save()" v-for="(data, index) in reviews2" :id="index"></zametki>
         </ul>
         </div>
     `, })
@@ -104,7 +109,7 @@ Vue.component('reviews', {
     template: `
          <div class="zametka3FORM">
         <ul>
-            <zametki :data="data" v-for="(data, index) in reviews3" :id="index"></zametki>
+            <zametki :data="data" @save="save()" v-for="(data, index) in reviews3" :id="index"></zametki>
         </ul>
         </div>
     `,
@@ -199,25 +204,44 @@ let app = new Vue({
                 this.productReview.review5.reviewname = '';
                 this.allreviews = [];
                 this.productReview.rating='';
-                // this.save()
+                this.save()
             },
+            save() {
+                localStorage.reviews = JSON.stringify(this.reviews)
+                localStorage.reviews2 = JSON.stringify(this.reviews2)
+                localStorage.reviews3 = JSON.stringify(this.reviews3)
+            },
+            time(id) {
+                let timeData = new Date();
+                this.reviews2[id].time = timeData.getHours() + ':' + timeData.getMinutes();
+                this.reviews2[id].date = timeData.getDate() + '.' + timeData.getMonth() + '.' + timeData.getFullYear();
+            }
         },
     mounted() {
+        if (localStorage.reviews) {
+            this.reviews = JSON.parse(localStorage.reviews)
+        }
+        if (localStorage.reviews2) {
+            this.reviews2 = JSON.parse(localStorage.reviews2)
+        }
+        if (localStorage.reviews3) {
+            this.reviews3 = JSON.parse(localStorage.reviews3)
+        }
        eventBus.$on('move-reviews2', (id) => {
         if (this.reviews2.length < 5) {
             if (this.reviews[id].completedNum >= 50) {
                 this.reviews2.push(this.reviews[id])
                 this.reviews.splice(id, 1)
-                // this.save()
+                this.save()
             }
         }
     });
         eventBus.$on('move-reviews3', (id) => {
             if (this.reviews2[id].completedNum === 100) {
-                // this.time(id)
+                this.time(id)
                 this.reviews3.push(this.reviews2[id])
                 this.reviews2.splice(id, 1)
-                // this.save()
+                this.save()
             }
         })
     }
